@@ -7,6 +7,8 @@ import { Pandora } from "src/Pandora.sol";
 contract PandoraTest is Test {
     Pandora token;
     address owner = address(0x1);
+    address alice = address(0xa);
+    address bob = address(0xb);
 
     function setUp() public {
         token = new Pandora(owner);
@@ -20,8 +22,15 @@ contract PandoraTest is Test {
         assertEq(token.owner(), owner, "wrong owner");
     }
 
-    function testFoo(uint256 x) public {
-        vm.assume(x < type(uint128).max);
-        assertEq(x + x, x * 2);
+    function testTransferOne() public {
+        vm.prank(owner);
+        token.transfer(alice, 1e18);
+        assertEq(token.balanceOf(alice), 1e18, "Alice's balance");
+    }
+
+    function testTransferOneHalf() public {
+        vm.prank(owner);
+        token.transfer(alice, 1.5 * 1e18);
+        assertEq(token.balanceOf(alice), 1e18, "Alice's balance");
     }
 }
