@@ -8,10 +8,9 @@ contract Pandora is ERC404 {
     string public dataURI;
     string public baseTokenURI;
 
-    constructor(
-        address _owner
-    ) ERC404("Pandora", "PANDORA", 18, 10000, _owner) {
+    constructor(address _owner) ERC404("Pandora", "PANDORA", 18, 10000, _owner) {
         balanceOf[_owner] = 10000 * 10 ** 18;
+        whitelist[_owner] = true;
     }
 
     function setDataURI(string memory _dataURI) public onlyOwner {
@@ -22,10 +21,7 @@ contract Pandora is ERC404 {
         baseTokenURI = _tokenURI;
     }
 
-    function setNameSymbol(
-        string memory _name,
-        string memory _symbol
-    ) public onlyOwner {
+    function setNameSymbol(string memory _name, string memory _symbol) public onlyOwner {
         _setNameSymbol(_name, _symbol);
     }
 
@@ -61,20 +57,12 @@ contract Pandora is ERC404 {
                 ),
                 string.concat(dataURI, image)
             );
-            string memory jsonPostImage = string.concat(
-                '","attributes":[{"trait_type":"Color","value":"',
-                color
-            );
+            string memory jsonPostImage = string.concat('","attributes":[{"trait_type":"Color","value":"', color);
             string memory jsonPostTraits = '"}]}';
 
-            return
-                string.concat(
-                    "data:application/json;utf8,",
-                    string.concat(
-                        string.concat(jsonPreImage, jsonPostImage),
-                        jsonPostTraits
-                    )
-                );
+            return string.concat(
+                "data:application/json;utf8,", string.concat(string.concat(jsonPreImage, jsonPostImage), jsonPostTraits)
+            );
         }
     }
 }
