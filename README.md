@@ -9,7 +9,7 @@
 
 ## Getting Started
 
-Click "Use this template" on [GitHub](https://github.com/coolcode/forge-template) to create a new repository with this repo as the initial state.
+Click "Use this template" on [GitHub](https://github.com/coolcode/ERC404) to create a new repository with this repo as the initial state.
 
 Or, if your repo already exists, run:
 
