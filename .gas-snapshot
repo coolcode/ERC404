@@ -1,2 +1,2 @@
-TestContract:testBar() (gas: 351)
-TestContract:testFoo(uint256) (runs: 1024, μ: 3364, ~: 3364)
+PandoraTest:testFoo(uint256) (runs: 1024, μ: 3364, ~: 3364)
+PandoraTest:testMetadata() (gas: 21613)
