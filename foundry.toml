@@ -1,0 +1,17 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+verbosity = 3
+optimizer = true
+optimizer_runs = 20_000
+remappings = [
+  
+]
+
+[fuzz]
+runs = 1024
+
+# https://book.getfoundry.sh/reference/config/formatter
+[fmt]
+bracket_spacing = true
